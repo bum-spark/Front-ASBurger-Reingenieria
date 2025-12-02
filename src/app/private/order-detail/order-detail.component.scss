@@ -1,0 +1,46 @@
+﻿/* Estilizar el contenedor del dialog */
+:host {
+  display: block;
+  font-family: "Outfit", sans-serif;
+}
+
+/* Scrollbar personalizado */
+.overflow-y-auto {
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--gray);
+    border-radius: 2px;
+    
+    &:hover {
+      background-color: var(--secondary);
+    }
+  }
+}
+
+/* Margen para ingredientes */
+.ml-13 {
+  margin-left: 3.25rem;
+}
+
+/* Reset padding del mat-dialog-content */
+::ng-deep {
+  .mat-mdc-dialog-content {
+    padding: 0 24px !important;
+    max-height: 60vh !important;
+  }
+  
+  .mat-mdc-dialog-actions {
+    padding: 16px 24px !important;
+  }
+  
+  .mat-mdc-dialog-surface {
+    border-radius: 16px !important;
+  }
+}

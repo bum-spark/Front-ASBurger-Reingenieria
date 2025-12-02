@@ -1,0 +1,53 @@
+﻿:host {
+  display: block;
+  font-family: "Outfit", sans-serif;
+}
+
+/* Estilos para la tabla de Material */
+::ng-deep {
+  /* Header de la tabla */
+  .mat-mdc-header-cell {
+    background-color: var(--gray-light) !important;
+    border-bottom: 1px solid #e5e5e5 !important;
+  }
+
+  /* Celdas */
+  .mat-mdc-cell {
+    border-bottom: 1px solid #f3f4f6 !important;
+  }
+
+  /* Fila hover */
+  .mat-mdc-row:hover {
+    background-color: #f9fafb !important;
+  }
+
+  /* Paginador */
+  .mat-mdc-paginator {
+    background: transparent !important;
+    font-family: "Outfit", sans-serif !important;
+  }
+
+  .mat-mdc-paginator-container {
+    padding: 8px 0 !important;
+  }
+
+  /* Sort header */
+  .mat-sort-header-arrow {
+    color: var(--gray) !important;
+  }
+
+  /* Input de búsqueda - ocultar el mat-form-field legacy */
+  .mat-mdc-form-field {
+    display: none !important;
+  }
+}
+
+/* Badge de roles */
+.bg-red-100 { background-color: #fee2e2; }
+.text-red-700 { color: #b91c1c; }
+.bg-blue-100 { background-color: #dbeafe; }
+.text-blue-700 { color: #1d4ed8; }
+.bg-green-100 { background-color: #dcfce7; }
+.text-green-700 { color: #15803d; }
+.bg-yellow-100 { background-color: #fef3c7; }
+.text-yellow-700 { color: #a16207; }

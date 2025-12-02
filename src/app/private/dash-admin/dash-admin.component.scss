@@ -1,0 +1,27 @@
+﻿:host {
+  display: block;
+  font-family: "Outfit", sans-serif;
+}
+
+/* Card de estadisticas hover */
+.bg-white {
+  transition: box-shadow 0.2s ease;
+}
+
+.bg-white:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Colores de iconos personalizados */
+.text-primary {
+  color: var(--primary);
+}
+
+.bg-primary\/20 {
+  background-color: rgba(255, 202, 64, 0.2);
+}
+
+/* Canvas de graficas*/
+canvas {
+  max-height: 300px;
+}

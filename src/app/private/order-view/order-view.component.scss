@@ -1,0 +1,69 @@
+﻿.overflow-y-auto {
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--gray);
+    border-radius: 3px;
+    
+    &:hover {
+      background-color: var(--secondary);
+    }
+  }
+}
+
+/* Animacion suave para cards */
+.shadow-sm {
+  transition: box-shadow 0.2s ease;
+  
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+}
+
+/* Estilizar radio buttons de Angular Material */
+.order-type-radio {
+  ::ng-deep {
+    .mdc-radio__outer-circle {
+      border-color: var(--gray) !important;
+    }
+    
+    .mdc-radio__inner-circle {
+      background-color: var(--primary) !important;
+      border-color: var(--primary) !important;
+    }
+    
+    .mat-mdc-radio-checked {
+      .mdc-radio__outer-circle {
+        border-color: var(--primary) !important;
+      }
+    }
+    
+    .mdc-label {
+      font-family: "Outfit", sans-serif;
+      color: var(--black);
+    }
+  }
+}
+
+/* Divider personalizado */
+.divider {
+  height: 1px;
+  background-color: var(--border-color);
+  border: none;
+  
+  &::before, &::after {
+    display: none;
+  }
+}
+
+/* Input readonly */
+input[readonly] {
+  cursor: not-allowed;
+  opacity: 0.7;
+}

@@ -1,0 +1,133 @@
+﻿<div class="p-6">
+  <!-- Header de la seccion -->
+  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+    <div>
+      <h1 class="text-2xl font-bold text-black">Gestión de Usuarios</h1>
+      <p class="text-gray mt-1">Administra los usuarios del sistema</p>
+    </div>
+    
+    <!-- Boton nuevo usuario -->
+    <button [routerLink]="'/private/user-create'" 
+            class="btn bg-primary hover:bg-primary-hover text-black border-none gap-2 shadow-md">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+        <circle cx="9" cy="7" r="4"/>
+        <line x1="19" y1="8" x2="19" y2="14"/>
+        <line x1="22" y1="11" x2="16" y2="11"/>
+      </svg>
+      Nuevo Usuario
+    </button>
+  </div>
+
+  <!-- Card contenedora de la tabla -->
+  <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+    <!-- Barra de busqueda -->
+    <div class="p-4 border-b border-gray-100">
+      <div class="relative max-w-md">
+        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="m21 21-4.35-4.35"/>
+          </svg>
+        </div>
+        <input type="text" 
+               (keyup)="applyFilter($event)" 
+               #input
+               placeholder="Buscar por nombre, teléfono o rol..."
+               class="input input-bordered w-full pl-10 bg-gray-light border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20">
+      </div>
+    </div>
+
+    <!-- Tabla -->
+    <div class="overflow-x-auto">
+      <table mat-table [dataSource]="dataSource" matSort class="w-full">
+        
+        <!-- Columna Nombre -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="!bg-gray-light !text-black !font-semibold !py-4 !px-6">
+            <div class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+              Nombre
+            </div>
+          </th>
+          <td mat-cell *matCellDef="let row" class="!py-4 !px-6">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-black font-bold">
+                {{ row.name?.charAt(0)?.toUpperCase() }}
+              </div>
+              <span class="font-medium text-black">{{ row.name }}</span>
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Columna Telefono -->
+        <ng-container matColumnDef="phone">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="!bg-gray-light !text-black !font-semibold !py-4 !px-6">
+            <div class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              Teléfono
+            </div>
+          </th>
+          <td mat-cell *matCellDef="let row" class="!py-4 !px-6 text-gray">
+            {{ row.phone || 'Sin teléfono' }}
+          </td>
+        </ng-container>
+
+        <!-- Columna Rol -->
+        <ng-container matColumnDef="rol">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="!bg-gray-light !text-black !font-semibold !py-4 !px-6">
+            <div class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              Rol
+            </div>
+          </th>
+          <td mat-cell *matCellDef="let row" class="!py-4 !px-6">
+            <span class="px-3 py-1 rounded-full text-sm font-medium"
+                  [ngClass]="{
+                    'bg-red-100 text-red-700': row.rol === 0,
+                    'bg-blue-100 text-blue-700': row.rol === 1,
+                    'bg-green-100 text-green-700': row.rol === 2,
+                    'bg-yellow-100 text-yellow-700': row.rol === 3
+                  }">
+              {{ mapRol(row.rol) }}
+            </span>
+          </td>
+        </ng-container>
+
+        <!-- Header y filas -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row 
+            *matRowDef="let row; columns: displayedColumns;"
+            [routerLink]="'/private/user-edit/' + row.idusers"
+            class="hover:bg-gray-50 cursor-pointer transition-colors"></tr>
+
+        <!-- Sin resultados -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell !py-12 !text-center" colspan="3">
+            <div class="flex flex-col items-center gap-2 text-gray">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 opacity-50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="m21 21-4.35-4.35"/>
+              </svg>
+              <p>No se encontraron resultados para "<span class="font-medium text-black">{{ input.value }}</span>"</p>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Paginador -->
+    <div class="border-t border-gray-100 px-4 py-2">
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" 
+                     aria-label="Seleccionar página de usuarios"
+                     class="!bg-transparent"></mat-paginator>
+    </div>
+  </div>
+</div>

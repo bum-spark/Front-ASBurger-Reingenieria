@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========================================
+   AS BURGER - SISTEMA DE COMANDAS
+   Rediseno UI/UX - Noviembre 2025
+   ======================================== */
+
+/* Fuente principal: Outfit */
+html, body { 
+  height: 100%; 
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body { 
+  margin: 0; 
+  background-color: #F8F8F7;
+}
+
+/* ========================================
+   PALETA DE COLORES - AS BURGER
+   ======================================== */
+:root {
+  /* Colores principales */
+  --primary: #FFCA40;           /* Amarillo - botones, acentos */
+  --primary-hover: #E6B639;     /* Amarillo hover */
+  --secondary: #C8161D;         /* Rojo - logo, alertas */
+  --secondary-hover: #A51218;   /* Rojo hover */
+  
+  /* Neutros */
+  --black: #000000;             /* Textos principales */
+  --gray: #808080;              /* Textos secundarios */
+  --gray-light: #F8F8F7;        /* Fondos */
+  --white: #FFFFFF;             /* Fondos cards */
+  
+  /* Bordes */
+  --border-color: #E5E5E5;
+  --border-radius: 12px;
+  
+  /* Legacy (mantener compatibilidad) */
+  --secondaryOpacity: #C8161D5a;
+}
+
+/* ========================================
+   UTILIDADES GLOBALES
+   ======================================== */
+*{
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
+::-webkit-scrollbar{
+  display: none !important;
+}
+
+/* Fix para Angular Material */
+.mdc-notched-outline__notch {
+  border-right: 0 !important;
+}
+
+/* ========================================
+   BOTONES - NUEVO DISENO
+   ======================================== */
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--black);
+  padding: 12px 24px;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  font-family: "Outfit", sans-serif;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+  background-color: var(--white);
+  color: var(--black);
+  padding: 12px 24px;
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  font-family: "Outfit", sans-serif;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--gray);
+}
+
+/* Legacy buttons (mantener compatibilidad) */
+.button-primary {
+  color: var(--black);
+  background-color: var(--primary);
+  padding: 12px 24px;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+.button-secundary {
+  color: var(--black);
+  background-color: var(--white);
+  padding: 12px 24px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+}
+
+/* ========================================
+   INPUTS - FIX NUMEROS
+   ======================================== */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+  box-shadow: 0 0 #0000 !important;
+}
+
+/* ========================================
+   CARDS
+   ======================================== */
+.card {
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  padding: 24px;
+}
