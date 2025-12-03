@@ -37,11 +37,19 @@
               <path d="M4 16V18C4 18 4 20 12 20C20 20 20 18 20 18V16" stroke="currentColor" stroke-width="1.5"/>
             </svg>
           </div>
-          <div>
+          <div class="flex-1">
             <span class="text-xs text-gray-custom font-outfit">{{ eachOrder?.category }}</span>
             <h4 class="font-semibold text-black font-outfit">{{ eachOrder?.product }}</h4>
           </div>
         </div>
+
+        <!-- Comentario del producto -->
+        @if (eachOrder?.comments_product) {
+          <div class="bg-gray-light rounded-lg p-3 mb-2">
+            <span class="text-xs text-gray-custom font-outfit">Nota:</span>
+            <p class="text-sm text-black font-outfit mt-1">{{ eachOrder?.comments_product }}</p>
+          </div>
+        }
         
         <!-- Ingredientes modificados -->
         @if (eachOrder?.ingredients?.length) {

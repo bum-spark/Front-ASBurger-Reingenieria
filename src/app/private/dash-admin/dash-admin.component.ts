@@ -36,10 +36,10 @@ async ngOnInit() {
 }
 async listenGraphics() {
   this._wsService.listen('grafica').subscribe((data) => {
-    let btotal: number = parseInt(data.total ?? 0);
+    let btotal: number = parseFloat(data.total ?? 0);
     let atotal: number = this.dataSales.datasets[0].data[data.mes - 1] as number ?? 0;
     this.dataSales.datasets[0].data[data.mes - 1] = btotal + atotal;
-    this.total.total = parseInt(this.total.total) + data.total;
+    this.total.total = parseFloat(this.total.total) + parseFloat(data.total);
     
     this.chartSales.update();
   });

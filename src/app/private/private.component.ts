@@ -18,12 +18,13 @@ import { LocalstorageService } from '../services/localstorage.service';
 export class PrivateComponent {
   private _localstorage: LocalstorageService = inject(LocalstorageService);
   private _router: Router = inject(Router);
-  user: string = '';
   rol: number = 0;
 
-  ngOnInit(){
+  get user(): string {
+    return this._localstorage.getItem('user')?.name || '';
+  }
 
-    this.user = this._localstorage.getItem('user').name;
+  ngOnInit(){
     this.rol = this._localstorage.getItem('user').rol;
   }
   logOut(){

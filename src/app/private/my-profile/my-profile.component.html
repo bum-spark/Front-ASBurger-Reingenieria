@@ -1,126 +1,125 @@
-﻿<div class="min-h-[calc(100vh-88px)] bg-gray-light p-6 flex items-start justify-center">
-  <div class="w-full max-w-md">
+﻿<div class="min-h-[calc(100vh-88px)] bg-white">
+  
+  <!-- Header con avatar -->
+  <div class="bg-primary p-6 pb-16">
+    <div class="max-w-2xl mx-auto text-center">
+      <h1 class="text-2xl font-bold text-black font-outfit">Mi Perfil</h1>
+      <p class="text-sm text-black/70 font-outfit mt-1">Actualiza tu informacion personal</p>
+    </div>
+  </div>
+  
+  <!-- Avatar flotante -->
+  <div class="flex justify-center -mt-12 mb-6">
+    <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-lg">
+      <span class="text-4xl font-bold text-primary font-outfit">{{ user?.name?.charAt(0)?.toUpperCase() }}</span>
+    </div>
+  </div>
+  
+  <!-- Formulario -->
+  <form [formGroup]="profileForm" (ngSubmit)="saveProfile()" class="max-w-2xl mx-auto px-6 pb-6 space-y-5">
     
-    <!-- Card de Perfil -->
-    <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
-      
-      <!-- Header con avatar -->
-      <div class="bg-primary p-6 text-center">
-        <div class="w-24 h-24 bg-white rounded-full mx-auto mb-4 flex items-center justify-center shadow-lg">
-          <span class="text-4xl font-bold text-primary font-outfit">{{ user?.name?.charAt(0)?.toUpperCase() }}</span>
-        </div>
-        <h1 class="text-2xl font-bold text-black font-outfit">Mi Perfil</h1>
-        <p class="text-sm text-black/70 font-outfit mt-1">Actualiza tu informacion personal</p>
-      </div>
-      
-      <!-- Formulario -->
-      <form [formGroup]="profileForm" (ngSubmit)="saveProfile()" class="p-6 space-y-5">
-        
-        <!-- Campo Nombre -->
-        <div class="form-control w-full">
-          <label class="label">
-            <span class="label-text font-outfit font-semibold text-gray-custom">Nombre completo</span>
-          </label>
-          <div class="relative">
-            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-custom">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5">
-                <circle cx="12" cy="8" r="4"/>
-                <path d="M5 20c0-4 3.5-7 7-7s7 3 7 7"/>
-              </svg>
-            </span>
-            <input type="text" 
-                   formControlName="name"
-                   placeholder="Tu nombre completo"
-                   class="input input-bordered w-full pl-12 font-outfit bg-white focus:border-primary focus:outline-none">
-          </div>
-          @if (profileForm.get('name')?.invalid && profileForm.get('name')?.touched) {
-            <label class="label">
-              <span class="label-text-alt text-secondary font-outfit">Minimo 3 caracteres</span>
-            </label>
-          }
-        </div>
-        
-        <!-- Campo Telefono -->
-        <div class="form-control w-full">
-          <label class="label">
-            <span class="label-text font-outfit font-semibold text-gray-custom">Telefono</span>
-          </label>
-          <div class="relative">
-            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-custom">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2"/>
-              </svg>
-            </span>
-            <input type="tel" 
-                   formControlName="phone"
-                   placeholder="Tu numero de telefono"
-                   class="input input-bordered w-full pl-12 font-outfit bg-white focus:border-primary focus:outline-none">
-          </div>
-          @if (profileForm.get('phone')?.invalid && profileForm.get('phone')?.touched) {
-            <label class="label">
-              <span class="label-text-alt text-secondary font-outfit">Minimo 10 digitos</span>
-            </label>
-          }
-        </div>
-        
-        <!-- Campo Contraseña -->
-        <div class="form-control w-full">
-          <label class="label">
-            <span class="label-text font-outfit font-semibold text-gray-custom">Nueva contraseña (opcional)</span>
-          </label>
-          <div class="relative">
-            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-custom">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5">
-                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                <path d="M7 11V7a5 5 0 0110 0v4"/>
-              </svg>
-            </span>
-            <input type="password" 
-                   formControlName="password"
-                   placeholder="Dejar vacio para mantener la actual"
-                   class="input input-bordered w-full pl-12 font-outfit bg-white focus:border-primary focus:outline-none">
-          </div>
-          <label class="label">
-            <span class="label-text-alt text-gray-custom font-outfit">Dejar vacio para mantener la contraseña actual</span>
-          </label>
-          @if (profileForm.get('password')?.invalid && profileForm.get('password')?.touched) {
-            <label class="label">
-              <span class="label-text-alt text-secondary font-outfit">Minimo 6 caracteres</span>
-            </label>
-          }
-        </div>
-        
-        <!-- Info del Rol -->
-        <div class="bg-gray-light rounded-xl p-4">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" class="text-primary">
-                <path d="M12 15c-3.866 0-7 1.79-7 4v1h14v-1c0-2.21-3.134-4-7-4z" stroke="currentColor" stroke-width="1.5"/>
-                <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/>
-              </svg>
-            </div>
-            <div>
-              <p class="text-xs text-gray-custom font-outfit">Tu rol en el sistema</p>
-              <p class="font-semibold text-black font-outfit">Cliente</p>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Boton Guardar -->
-        <button type="submit" 
-                class="btn w-full bg-primary hover:bg-primary-hover text-black font-outfit font-semibold gap-2 border-none mt-4"
-                [disabled]="profileForm.invalid">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/>
-            <polyline points="17,21 17,13 7,13 7,21"/>
-            <polyline points="7,3 7,8 15,8"/>
+    <!-- Campo Nombre -->
+    <div class="form-control w-full">
+      <label class="label">
+        <span class="label-text font-outfit font-semibold text-gray-custom">Nombre completo</span>
+      </label>
+      <div class="relative">
+        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-custom">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="8" r="4"/>
+            <path d="M5 20c0-4 3.5-7 7-7s7 3 7 7"/>
           </svg>
-          Guardar Cambios
-        </button>
-        
-      </form>
-      
+        </span>
+        <input type="text" 
+               formControlName="name"
+               placeholder="Tu nombre completo"
+               class="input input-bordered w-full pl-12 font-outfit bg-gray-light focus:border-primary focus:outline-none">
+      </div>
+      @if (profileForm.get('name')?.invalid && profileForm.get('name')?.touched) {
+        <label class="label">
+          <span class="label-text-alt text-secondary font-outfit">Minimo 3 caracteres</span>
+        </label>
+      }
     </div>
     
-  </div>
+    <!-- Campo Telefono -->
+    <div class="form-control w-full">
+      <label class="label">
+        <span class="label-text font-outfit font-semibold text-gray-custom">Telefono</span>
+      </label>
+      <div class="relative">
+        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-custom">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2"/>
+          </svg>
+        </span>
+        <input type="tel" 
+               formControlName="phone"
+               placeholder="Tu numero de telefono"
+               class="input input-bordered w-full pl-12 font-outfit bg-gray-light focus:border-primary focus:outline-none">
+      </div>
+      @if (profileForm.get('phone')?.invalid && profileForm.get('phone')?.touched) {
+        <label class="label">
+          <span class="label-text-alt text-secondary font-outfit">Minimo 10 digitos</span>
+        </label>
+      }
+    </div>
+    
+    <!-- Campo Contraseña -->
+    <div class="form-control w-full">
+      <label class="label">
+        <span class="label-text font-outfit font-semibold text-gray-custom">Nueva contraseña (opcional)</span>
+      </label>
+      <div class="relative">
+        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-custom">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0110 0v4"/>
+          </svg>
+        </span>
+        <input type="password" 
+               formControlName="password"
+               placeholder="Dejar vacio para mantener la actual"
+               class="input input-bordered w-full pl-12 font-outfit bg-gray-light focus:border-primary focus:outline-none">
+      </div>
+      <label class="label">
+        <span class="label-text-alt text-gray-custom font-outfit">Dejar vacio para mantener la contraseña actual</span>
+      </label>
+      @if (profileForm.get('password')?.invalid && profileForm.get('password')?.touched) {
+        <label class="label">
+          <span class="label-text-alt text-secondary font-outfit">Minimo 6 caracteres</span>
+        </label>
+      }
+    </div>
+    
+    <!-- Info del Rol -->
+    <div class="bg-gray-light rounded-xl p-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" class="text-primary">
+            <path d="M12 15c-3.866 0-7 1.79-7 4v1h14v-1c0-2.21-3.134-4-7-4z" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div>
+          <p class="text-xs text-gray-custom font-outfit">Tu rol en el sistema</p>
+          <p class="font-semibold text-black font-outfit">Cliente</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Boton Guardar -->
+    <button type="submit" 
+            class="btn w-full bg-primary hover:bg-primary-hover text-black font-outfit font-semibold gap-2 border-none mt-4"
+            [disabled]="profileForm.invalid">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/>
+        <polyline points="17,21 17,13 7,13 7,21"/>
+        <polyline points="7,3 7,8 15,8"/>
+      </svg>
+      Guardar Cambios
+    </button>
+    
+  </form>
+  
 </div>
