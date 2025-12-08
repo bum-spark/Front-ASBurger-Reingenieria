@@ -8,38 +8,30 @@
     </div>
   </div>
 
-  <!-- Cards de estadisticas -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <!-- Card Ventas Totales -->
-    <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
-      <div class="flex items-center gap-4">
-        <div class="w-14 h-14 bg-primary/20 rounded-xl flex items-center justify-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="12" y1="1" x2="12" y2="23"/>
-            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-          </svg>
-        </div>
-        <div>
-          <p class="text-gray text-sm font-medium">Ventas Totales del Mes</p>
-          <p class="text-3xl font-bold text-black">{{ total.total | currency:'$' }}</p>
-        </div>
+  <!-- Stats de estadisticas -->
+  <div class="stats shadow w-full bg-white">
+    <div class="stat">
+      <div class="stat-figure text-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-8 w-8 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="2">
+          <line x1="12" y1="1" x2="12" y2="23"/>
+          <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+        </svg>
       </div>
+      <div class="stat-title">Ventas Totales del Mes</div>
+      <div class="stat-value text-primary">{{ total.total | currency:'$' }}</div>
+      <div class="stat-desc">Ingresos acumulados</div>
     </div>
 
-    <!-- Card Tiempo Promedio -->
-    <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
-      <div class="flex items-center gap-4">
-        <div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"/>
-            <polyline points="12 6 12 12 16 14"/>
-          </svg>
-        </div>
-        <div>
-          <p class="text-gray text-sm font-medium">Tiempo Promedio de Preparación</p>
-          <p class="text-3xl font-bold text-black">{{ avg.minutos }} <span class="text-lg font-normal text-gray">minutos</span></p>
-        </div>
+    <div class="stat">
+      <div class="stat-figure text-success">
+        <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-8 w-8 stroke-current" viewBox="0 0 24 24" fill="none" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
+        </svg>
       </div>
+      <div class="stat-title">Tiempo Promedio de Preparación</div>
+      <div class="stat-value text-success">{{ avg.minutos }} min</div>
+      <div class="stat-desc">Por orden completada</div>
     </div>
   </div>
 
@@ -91,7 +83,7 @@
       </div>
     </div>
 
-    <!-- Grafica Productos Más Vendidos -->
+    <!-- Grafica Productos mas Vendidos -->
     <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
       <div class="px-6 py-4 border-b border-gray-100">
         <div class="flex items-center gap-3">

@@ -1,29 +1,126 @@
-# ComandaHamburguesas
+# AS Burger - Sistema de Comandas (Frontend)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.2.
+Sistema de gestión de comandas para restaurante de hamburguesas, desarrollado con Angular 17.
 
-## Development server
+## Descripción
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Este proyecto es el resultado de un proceso de **reingeniería de software** aplicado al sistema original de comandas "AS Burger". El sistema permite la gestión completa de pedidos, usuarios, menú y estadísticas de ventas para un restaurante de hamburguesas.
 
-## Code scaffolding
+### Proceso de Reingeniería Aplicado
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Este sistema fue sometido a un proceso completo de reingeniería que incluyó:
 
-## Build
+1. **Ingeniería Inversa**: Análisis y comprensión del sistema existente, extracción de la lógica de negocio y documentación del código fuente original.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+2. **Reestructuración de Documentos**: Reorganización de la estructura de archivos y carpetas para mejorar la mantenibilidad y escalabilidad del proyecto.
 
-## Running unit tests
+3. **Reestructuración de Código**: Refactorización del código existente aplicando mejores prácticas, patrones de diseño y optimización del rendimiento.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+4. **Ingeniería Progresiva**: Integración de nuevos requerimientos y funcionalidades al sistema existente, incluyendo:
+   - Mejoras en la interfaz de usuario (UI/UX)
+   - Nuevos componentes y vistas
+   - Optimización del flujo de trabajo
+   - Implementación de nuevas características solicitadas
 
-## Running end-to-end tests
+5. **Creación de Nuevos Diagramas**: Documentación visual actualizada del sistema incluyendo diagramas de arquitectura, flujo de datos y casos de uso.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Créditos
 
-## Further help
+- **Sistema Original**: Desarrollado por **Lizeth Abril González Vázquez**
+- **Reingeniería**: Aplicada como parte del proyecto de la materia de Reingeniería de Software
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-# proyecto-angular
-# project-front
+## Repositorios
+
+### Repositorios Originales
+| Proyecto | Enlace |
+|----------|--------|
+| Frontend Original | [project-front](https://github.com/LizethVqz/project-front.git) |
+| Backend Original | [project-ws](https://github.com/LizethVqz/project-ws.git) |
+
+### Repositorios con Reingeniería
+| Proyecto | Enlace |
+|----------|--------|
+| Frontend (este repo) | [Front-ASBurger-Reingenieria](https://github.com/bum-spark/Front-ASBurger-Reingenieria.git) |
+| Backend | [Back-ASBurger-Reingenieria](https://github.com/bum-spark/Back-ASBurger-Reingenieria.git) |
+
+## Tecnologías Utilizadas
+
+- **Angular** 17.1.0
+- **TypeScript** 5.3.2
+- **Tailwind CSS** 3.4.18
+- **DaisyUI** 4.12.24
+- **Angular Material** 17.3.8
+- **Chart.js** + ng2-charts (para gráficas)
+- **Socket.IO** (comunicación en tiempo real)
+
+## Instalación y Ejecución
+
+### Prerrequisitos
+
+- **Node.js** (versión 18.x o superior recomendada)
+- **npm** (incluido con Node.js)
+- **Angular CLI** versión 17.1.2
+
+### Pasos de Instalación
+
+1. **Clonar el repositorio**
+   ```bash
+   git clone https://github.com/bum-spark/Front-ASBurger-Reingenieria.git
+   cd Front-ASBurger-Reingenieria
+   ```
+
+2. **Instalar Angular CLI** (si no lo tienes instalado)
+   ```bash
+   npm install -g @angular/cli@17.1.2
+   ```
+
+3. **Instalar dependencias del proyecto**
+   ```bash
+   npm install
+   ```
+
+4. **Ejecutar el servidor de desarrollo**
+   ```bash
+   ng serve
+   ```
+
+5. **Acceder a la aplicación**
+   
+   Navega a `http://localhost:4200/` en tu navegador. La aplicación se recargará automáticamente cuando realices cambios en los archivos fuente.
+
+### Comandos Útiles
+
+| Comando | Descripción |
+|---------|-------------|
+| `ng serve` | Inicia el servidor de desarrollo |
+| `ng build` | Compila el proyecto para producción |
+| `ng test` | Ejecuta las pruebas unitarias |
+| `ng generate component nombre` | Genera un nuevo componente |
+
+## Estructura del Proyecto
+
+```
+src/
+├── app/
+│   ├── environments/      # Configuración de entornos
+│   ├── guards/            # Guards de autenticación
+│   ├── interfaces/        # Modelos e interfaces TypeScript
+│   ├── private/           # Módulo privado (requiere autenticación)
+│   │   ├── chef-order-view/   # Vista de órdenes para chef
+│   │   ├── dash-admin/        # Dashboard administrativo
+│   │   ├── menu/              # Gestión del menú
+│   │   ├── order-view/        # Vista de órdenes
+│   │   └── user/              # Gestión de usuarios
+│   ├── public/            # Módulo público
+│   │   └── auth/          # Autenticación (login/registro)
+│   └── services/          # Servicios (API, WebSockets, etc.)
+└── assets/                # Recursos estáticos
+```
+
+## Nota Importante
+
+Este es únicamente el **Frontend** del sistema. Para el funcionamiento completo de la aplicación, es necesario tener corriendo también el **Backend** disponible en el repositorio correspondiente.
+
+## Licencia
+
+Este proyecto fue desarrollado con fines educativos como parte de la materia de Reingeniería de Software.
