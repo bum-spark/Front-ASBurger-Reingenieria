@@ -50,7 +50,7 @@ async ngOnInit() {
   const user = this._localStorage.getItem('user');
   this.rol = user.rol;
 
-  // Si es cliente (rol=3) se autocompletara el nombre
+  // Si es cliente se autocompletara el nombre
   if (this.rol === 3) {
     this._order.formOrder.controls['client'].patchValue(user.name);
     // Se selecciona solo "Para llevar" (value=0) para todos los productos

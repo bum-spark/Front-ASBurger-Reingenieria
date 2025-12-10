@@ -22,7 +22,6 @@ private _localStorage: LocalstorageService = inject(LocalstorageService)
 private _snackBar: MatSnackBar = inject(MatSnackBar)
 orderDetails: any = [];
 async ngOnInit() {
-  console.log(this._data); 
 
   this.orderDetails = await this._provider.request('GET', 'order/viewOrder', { idorder: this._data.idorder });
   console.log(this.orderDetails)

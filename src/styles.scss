@@ -1,12 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* ========================================
-   AS BURGER - SISTEMA DE COMANDAS
-   Rediseno UI/UX - Noviembre 2025
-   ======================================== */
-
 /* Fuente principal: Outfit */
 html, body { 
   height: 100%; 
@@ -21,9 +15,6 @@ body {
   background-color: #F8F8F7;
 }
 
-/* ========================================
-   PALETA DE COLORES - AS BURGER
-   ======================================== */
 :root {
   /* Colores principales */
   --primary: #FFCA40;           /* Amarillo - botones, acentos */
@@ -45,9 +36,6 @@ body {
   --secondaryOpacity: #C8161D5a;
 }
 
-/* ========================================
-   UTILIDADES GLOBALES
-   ======================================== */
 *{
   -ms-overflow-style: none !important;
   scrollbar-width: none !important;
@@ -62,9 +50,6 @@ body {
   border-right: 0 !important;
 }
 
-/* ========================================
-   BOTONES - NUEVO DISENO
-   ======================================== */
 .btn-primary {
   background-color: var(--primary);
   color: var(--black);
@@ -116,9 +101,6 @@ body {
   border-radius: var(--border-radius);
 }
 
-/* ========================================
-   INPUTS - FIX NUMEROS
-   ======================================== */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -131,9 +113,6 @@ input[type="number"] {
   box-shadow: 0 0 #0000 !important;
 }
 
-/* ========================================
-   CARDS
-   ======================================== */
 .card {
   background-color: var(--white);
   border-radius: var(--border-radius);

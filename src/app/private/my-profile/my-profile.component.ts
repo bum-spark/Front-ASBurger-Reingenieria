@@ -68,7 +68,7 @@ export class MyProfileComponent implements OnInit {
         this.user.phone = this.profileForm.value.phone;
         await this._localStorage.setItem('user', this.user);
 
-        // Limpiar campo de contraseña después de guardar
+        // Limpiar campo de contraseña despues de guardar
         this.profileForm.patchValue({ password: null });
 
         this._snackBar.open('Perfil actualizado correctamente', '', { duration: 3000 });
